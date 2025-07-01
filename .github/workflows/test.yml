@@ -8,11 +8,13 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-            - uses: actions/setup-python@v4
-              with:
-                python-version: "3.11"
-            - uses: abatilo/actions-poetry@v3.0.2
-            - run: echo "$HOME/.local/bin" >> "$GITHUB_PATH"
-            - run: poetry -C battle-ship install
-            - run: poetry -C battle-ship run pytest
-            - run: poetry -C battle-ship run typer battle_ship/main.py run
+            # - uses: actions/setup-python@v4
+            #   with:
+            #     python-version: "3.11"
+            # - uses: abatilo/actions-poetry@v3.0.2
+            # - run: echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+            # - run: poetry -C battle-ship install
+            # - run: poetry -C battle-ship run pytest
+            # - run: poetry -C battle-ship run typer battle_ship/main.py run
+            - uses: ./.github/actions/example-run
+            
