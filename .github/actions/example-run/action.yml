@@ -9,14 +9,14 @@ runs:
             cat > testmo-resources.json <<EOF
             {
             "fields": [
-                { "name": "repo",         "type": "string", "value": "${GITHUB_REPOSITORY}" },
-                { "name": "branch",       "type": "string", "value": "${GITHUB_REF_NAME}" },
-                { "name": "commit",       "type": "string", "value": "${GITHUB_SHA:0:7}" },
-                { "name": "author",       "type": "string", "value": "${GITHUB_ACTOR}" },
+                { "name": "repo",         "type": "string", "value": "${github.repo}" },
+                { "name": "branch",       "type": "string", "value": "${github.ref}" },
+                { "name": "commit",       "type": "string", "value": "${github.sha}" },
+                { "name": "author",       "type": "string", "value": "${github.triggering_actor}" },
                 { "name": "message",      "type": "string", "value": "$(git log -1 --pretty=%s)" },
                 { "name": "timestamp",    "type": "string", "value": "$(git log -1 --pretty=%ci)" },
-                { "name": "attempt",      "type": "string", "value": "${GITHUB_RUN_ATTEMPT}" },
-                { "name": "run-id",       "type": "string", "value": "${GITHUB_RUN_ID}" },
+                { "name": "attempt",      "type": "string", "value": "${github.run_attempt}" },
+                { "name": "run-id",       "type": "string", "value": "${github.run_id}" },
                 { "name": "language",     "type": "string", "value": "${{ inputs.language }}" },
                 { "name": "test-tooling", "type": "string", "value": "${{ inputs.test_tooling }}" }
             ],
