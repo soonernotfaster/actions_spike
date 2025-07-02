@@ -4,7 +4,8 @@ description: Giving it a try
 runs:
     using: composite
     steps:
-        - run: |
+        - shell: bash
+          run: |
             cat > testmo-resources.json <<EOF
             {
             "fields": [
