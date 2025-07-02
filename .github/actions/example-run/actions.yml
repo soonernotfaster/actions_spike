@@ -1,7 +1,0 @@
-name: Example Reusable action 
-description: Giving it a try
-
-runs:
-    using: composite
-    steps:
-        - run: echo "Hello There!"

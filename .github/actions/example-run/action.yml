@@ -1,0 +1,31 @@
+name: Example Reusable action 
+description: Giving it a try
+
+runs:
+    using: composite
+    steps:
+        - run: |
+            cat > testmo-resources.json <<EOF
+            {
+            "fields": [
+                { "name": "repo",         "type": "string", "value": "${GITHUB_REPOSITORY}" },
+                { "name": "branch",       "type": "string", "value": "${GITHUB_REF_NAME}" },
+                { "name": "commit",       "type": "string", "value": "${GITHUB_SHA:0:7}" },
+                { "name": "author",       "type": "string", "value": "${GITHUB_ACTOR}" },
+                { "name": "message",      "type": "string", "value": "$(git log -1 --pretty=%s)" },
+                { "name": "timestamp",    "type": "string", "value": "$(git log -1 --pretty=%ci)" },
+                { "name": "attempt",      "type": "string", "value": "${GITHUB_RUN_ATTEMPT}" },
+                { "name": "run-id",       "type": "string", "value": "${GITHUB_RUN_ID}" },
+                { "name": "language",     "type": "string", "value": "${{ inputs.language }}" },
+                { "name": "test-tooling", "type": "string", "value": "${{ inputs.test_tooling }}" }
+            ],
+            "links": [
+                {
+                "name": "github-run",
+                "url": "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+                }
+            ]
+            }
+            EOF
+
+            cat testmo-resources.json
