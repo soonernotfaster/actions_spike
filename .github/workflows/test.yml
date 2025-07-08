@@ -5,10 +5,12 @@ on: [push]
 
 jobs:
     Exploring-GitHub-Actions:
+        name: job-1
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
 
     Test-2:
+      needs: [ Exploring-GitHub-Actions ]
       uses: ./.github/workflows/testmo.yml
             
