@@ -8,5 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-            - uses: ./.github/workflows/testmo.yml
+
+    Test-2:
+      uses: ./.github/workflows/testmo.yml
             
