@@ -1,0 +1,12 @@
+name: "Testmo"
+
+on:
+    workflow_run:
+
+jobs:
+    generate_manifest:
+        runs-on: ubuntu-latest
+
+        name: Generate manifest
+        steps:
+            - run: echo "foo!"
